@@ -2,9 +2,12 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 
-const ButtonMode = () => {
+const Timer = () => {
   const modeContext = useContext(ModeContext);
-  return <div></div>;
+
+  const { timer } = modeContext;
+
+  return <h1>{timer}</h1>;
 };
 
-export default ButtonMode;
+export default Timer;
