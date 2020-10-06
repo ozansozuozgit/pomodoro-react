@@ -7,7 +7,11 @@ const Timer = () => {
 
   const { timer } = modeContext;
 
-  return <h1>{timer}</h1>;
+  return <TimerDisplay>{timer}</TimerDisplay>;
 };
+
+const TimerDisplay = styled.span`
+  color: rgb(40, 93, 162);
+`;
 
 export default Timer;

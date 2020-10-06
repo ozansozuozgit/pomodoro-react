@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 
@@ -11,7 +11,6 @@ const ActionButton = () => {
     updateTimer,
     totalSeconds,
   } = modeContext;
-  // const [clockRunning, setClockRunning] = useState(false);
 
   const intervalRef = useRef();
 

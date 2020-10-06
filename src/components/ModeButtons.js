@@ -4,9 +4,8 @@ import ModeContext from '../context/modeContext';
 import ModeButton from './ModeButton';
 
 const Container = styled.div`
-  background-color: red;
-  width: 50%;
-  margin: auto;
+  width: 350px;
+  margin: 20px auto;
   display: flex;
   justify-content: space-around;
 `;
@@ -19,8 +18,8 @@ const ModeButtons = () => {
   return (
     <div>
       <Container>
-        <ModeButton name="study" />
-        <ModeButton name="rest" />
+        <ModeButton name="STUDY" />
+        <ModeButton name="REST" />
       </Container>
     </div>
   );

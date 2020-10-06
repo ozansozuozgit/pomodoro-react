@@ -3,7 +3,13 @@ import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 
 const Name = styled.button`
-  color: ${(props) => (props.mode === 'study' ? 'red' : 'blue')};
+  background-color: ${(props) => (props.mode === 'STUDY' ? 'red' : 'blue')};
+  border: none;
+  border-radius: 15px;
+  font-size: 1.8em;
+  width: 150px;
+  cursor: pointer;
+  outline: none;
   &:hover {
     opacity: 0.8;
   }
@@ -15,11 +21,11 @@ const ModeButton = ({ name }) => {
   const { setTimer, changeMode } = modeContext;
 
   const onChange = () => {
-    if (name === 'study') {
-      changeMode(name);
+    if (name === 'STUDY') {
+      changeMode('study');
       setTimer('25:00', 25 * 60);
     } else {
-      changeMode(name);
+      changeMode('rest');
       setTimer('10:00', 10 * 60);
     }
   };

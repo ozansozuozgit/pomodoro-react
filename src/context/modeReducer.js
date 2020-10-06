@@ -11,7 +11,7 @@ export default (state, action) => {
     case CHANGE_MODE:
       return {
         ...state,
-        mode: action.payload.mode,
+        mode: action.payload,
       };
     case SET_TIMER:
       return {

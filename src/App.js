@@ -5,19 +5,25 @@ import ModeButtons from './components/ModeButtons';
 import Timer from './components/Timer';
 import Slider from './components/Slider';
 import ActionButton from './components/ActionButton';
+import styled from 'styled-components';
 
 function App() {
   return (
     <ModeState>
-      <Fragment>
+      <Container>
         <Title />
         <ModeButtons />
         <Timer />
         <Slider />
         <ActionButton />
-      </Fragment>
+      </Container>
     </ModeState>
   );
 }
+
+const Container = styled.div`
+  background-color: black;
+  height: 100vh;
+`;
 
 export default App;
