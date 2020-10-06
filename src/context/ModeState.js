@@ -3,8 +3,6 @@ import ModeContext from './modeContext';
 import modeReducer from './modeReducer';
 
 import {
-  START_TIMER,
-  STOP_TIMER,
   CHANGE_MODE,
   SET_TIMER,
   CHANGE_BACKGROUND,
@@ -24,13 +22,13 @@ const ModeState = (props) => {
   const [state, dispatch] = useReducer(modeReducer, initialState);
 
   // Change mode
-  const changeMode = (mode, time) => {
-    dispatch({ type: CHANGE_MODE, payload: { mode, time } });
+  const changeMode = (mode) => {
+    dispatch({ type: CHANGE_MODE, payload: mode });
   };
 
   // Set Time
-  const setTimer = (time) => {
-    dispatch({ type: SET_TIMER, payload: time });
+  const setTimer = (time, seconds) => {
+    dispatch({ type: SET_TIMER, payload: { time, seconds } });
   };
 
   // Start Timer

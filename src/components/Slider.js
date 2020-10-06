@@ -14,8 +14,9 @@ const Slider = () => {
   const [slider, setSlider] = useState(25);
 
   const onSlide = (e) => {
-    setSlider(e.target.value);
-    setTimer(e.target.value);
+    const minutes = e.target.value;
+    setSlider(minutes);
+    setTimer(`${minutes < 10 ? '0' : ''}${minutes}:00`,minutes *60);
   };
 
   return (

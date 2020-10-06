@@ -1,6 +1,4 @@
 import {
-  START_TIMER,
-  STOP_TIMER,
   CHANGE_MODE,
   SET_TIMER,
   CHANGE_BACKGROUND,
@@ -14,13 +12,12 @@ export default (state, action) => {
       return {
         ...state,
         mode: action.payload.mode,
-        timer: action.payload.time,
       };
     case SET_TIMER:
       return {
         ...state,
-        timer: action.payload,
-        totalSeconds: action.payload * 60,
+        timer: action.payload.time,
+        totalSeconds: action.payload.seconds,
       };
     case UPDATE_TIMER:
       return {

@@ -12,13 +12,15 @@ const Name = styled.button`
 const ModeButton = ({ name }) => {
   const modeContext = useContext(ModeContext);
 
-  const { mode, changeMode } = modeContext;
+  const { setTimer, changeMode } = modeContext;
 
   const onChange = () => {
     if (name === 'study') {
-      changeMode(name, 30);
+      changeMode(name);
+      setTimer('25:00', 25 * 60);
     } else {
-      changeMode(name, 10);
+      changeMode(name);
+      setTimer('10:00', 10 * 60);
     }
   };
 
