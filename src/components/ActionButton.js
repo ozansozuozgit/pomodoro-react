@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 
@@ -6,23 +6,34 @@ const ActionButton = () => {
   const modeContext = useContext(ModeContext);
 
   const { isClockRunning, updateTimer, totalSeconds } = modeContext;
+  const [clockRunning, setClockRunning] = useState(false);
 
-  const timer = () => {
-    if (isClockRunning === false) {
-      const now = Date.now();
-      const then = now + totalSeconds * 1000;
-      displayTimeLeft(totalSeconds);
+  const intervalRef = useRef();
 
-      let countdown = setInterval(() => {
-        const secondsLeft = Math.round((then - Date.now()) / 1000);
-        // check if we should stop it
-        if (secondsLeft < 0) {
-          clearInterval(countdown);
-          return;
-        }
-        displayTimeLeft(secondsLeft);
-      }, 1000);
-    }
+  const startTimer = () => {
+    setClockRunning(clockRunning === false ? true : false);
+    const now = Date.now();
+    const then = now + totalSeconds * 1000;
+    displayTimeLeft(totalSeconds);
+
+    let countdown = setInterval(() => {
+      const secondsLeft = Math.round((then - Date.now()) / 1000);
+      // check if we should stop it
+      if (secondsLeft < 0) {
+        clearInterval(countdown);
+        return;
+      }
+
+      displayTimeLeft(secondsLeft);
+    }, 1000);
+
+    intervalRef.current = countdown;
+  };
+
+  const stopTimer = () => {
+    console.log('stop');
+    setClockRunning(clockRunning === true ? false : true);
+    clearInterval(intervalRef.current);
   };
 
   const displayTimeLeft = (seconds) => {
@@ -31,13 +42,12 @@ const ActionButton = () => {
     let timer = `${minutes < 10 ? '0' : ''}${minutes}:${
       remainderSeconds < 10 ? '0' : ''
     }${remainderSeconds}`;
-    console.log(timer);
-    updateTimer(timer);
+    updateTimer(timer, seconds);
   };
 
   return (
-    <button onClick={timer}>
-      {isClockRunning === false ? 'Start' : 'Stop'}
+    <button onClick={clockRunning === false ? startTimer : stopTimer}>
+      {clockRunning === false ? 'Start' : 'Stop'}
     </button>
   );
 };

@@ -8,7 +8,7 @@ import {
   CHANGE_MODE,
   SET_TIMER,
   CHANGE_BACKGROUND,
-  UPDATE_TIMER
+  UPDATE_TIMER,
 } from './types';
 
 const ModeState = (props) => {
@@ -17,7 +17,7 @@ const ModeState = (props) => {
     totalSeconds: 0,
     isClockRunning: false,
     background: null,
-    timer:1
+    timer: 1,
   };
 
   const [state, dispatch] = useReducer(modeReducer, initialState);
@@ -33,20 +33,20 @@ const ModeState = (props) => {
   };
 
   // Start Timer
-  const updateTimer = (time) => {
-    dispatch({ type: UPDATE_TIMER, payload: time });
+  const updateTimer = (time, secondsLeft) => {
+    dispatch({ type: UPDATE_TIMER, payload: { time, secondsLeft } });
   };
 
   return (
     <ModeContext.Provider
       value={{
         mode: state.mode,
-        timer:state.timer,
+        timer: state.timer,
         totalSeconds: state.totalSeconds,
         isClockRunning: state.isClockRunning,
         changeMode,
         setTimer,
-        updateTimer
+        updateTimer,
       }}
     >
       {props.children}

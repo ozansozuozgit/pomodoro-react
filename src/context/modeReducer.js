@@ -24,7 +24,9 @@ export default (state, action) => {
     case UPDATE_TIMER:
       return {
         ...state,
-        timer: action.payload,
+        timer: action.payload.time,
+        isClockRunning: true,
+        totalSeconds: action.payload.secondsLeft,
       };
     default:
       return state;
