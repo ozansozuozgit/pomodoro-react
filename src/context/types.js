@@ -4,3 +4,4 @@ export const STOP_TIMER = 'STOP_TIMER';
 export const SET_TIMER = 'SET_TIMER';
 export const UPDATE_TIMER = 'UPDATE_TIMER';
 export const CHANGE_BACKGROUND = 'CHANGE_BACKGROUND';
+export const SET_CLOCK_RUNNING = 'SET_CLOCK_RUNNING'

@@ -9,15 +9,16 @@ import {
   SET_TIMER,
   CHANGE_BACKGROUND,
   UPDATE_TIMER,
+  SET_CLOCK_RUNNING,
 } from './types';
 
 const ModeState = (props) => {
   const initialState = {
     mode: 'study',
-    totalSeconds: 0,
+    totalSeconds: 1500,
     isClockRunning: false,
     background: null,
-    timer: 1,
+    timer: '25:00',
   };
 
   const [state, dispatch] = useReducer(modeReducer, initialState);
@@ -34,7 +35,18 @@ const ModeState = (props) => {
 
   // Start Timer
   const updateTimer = (time, secondsLeft) => {
-    dispatch({ type: UPDATE_TIMER, payload: { time, secondsLeft } });
+    dispatch({
+      type: UPDATE_TIMER,
+      payload: { time, secondsLeft },
+    });
+  };
+
+  // Set is clock running
+  const setClockRunning = (clockRunning) => {
+    dispatch({
+      type: SET_CLOCK_RUNNING,
+      payload: clockRunning,
+    });
   };
 
   return (
@@ -47,6 +59,7 @@ const ModeState = (props) => {
         changeMode,
         setTimer,
         updateTimer,
+        setClockRunning,
       }}
     >
       {props.children}

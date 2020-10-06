@@ -5,6 +5,7 @@ import {
   SET_TIMER,
   CHANGE_BACKGROUND,
   UPDATE_TIMER,
+  SET_CLOCK_RUNNING,
 } from './types';
 
 export default (state, action) => {
@@ -25,9 +26,11 @@ export default (state, action) => {
       return {
         ...state,
         timer: action.payload.time,
-        isClockRunning: true,
         totalSeconds: action.payload.secondsLeft,
       };
+    case SET_CLOCK_RUNNING: {
+      return { ...state, isClockRunning: action.payload };
+    }
     default:
       return state;
   }

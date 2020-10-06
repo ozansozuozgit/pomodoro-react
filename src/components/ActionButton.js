@@ -5,25 +5,29 @@ import ModeContext from '../context/modeContext';
 const ActionButton = () => {
   const modeContext = useContext(ModeContext);
 
-  const { isClockRunning, updateTimer, totalSeconds } = modeContext;
-  const [clockRunning, setClockRunning] = useState(false);
+  const {
+    isClockRunning,
+    setClockRunning,
+    updateTimer,
+    totalSeconds,
+  } = modeContext;
+  // const [clockRunning, setClockRunning] = useState(false);
 
   const intervalRef = useRef();
 
   const startTimer = () => {
-    setClockRunning(clockRunning === false ? true : false);
+    setClockRunning(true);
     const now = Date.now();
     const then = now + totalSeconds * 1000;
     displayTimeLeft(totalSeconds);
 
     let countdown = setInterval(() => {
       const secondsLeft = Math.round((then - Date.now()) / 1000);
-      // check if we should stop it
+
       if (secondsLeft < 0) {
         clearInterval(countdown);
         return;
       }
-
       displayTimeLeft(secondsLeft);
     }, 1000);
 
@@ -31,8 +35,7 @@ const ActionButton = () => {
   };
 
   const stopTimer = () => {
-    console.log('stop');
-    setClockRunning(clockRunning === true ? false : true);
+    setClockRunning(false);
     clearInterval(intervalRef.current);
   };
 
@@ -46,8 +49,8 @@ const ActionButton = () => {
   };
 
   return (
-    <button onClick={clockRunning === false ? startTimer : stopTimer}>
-      {clockRunning === false ? 'Start' : 'Stop'}
+    <button onClick={isClockRunning === false ? startTimer : stopTimer}>
+      {isClockRunning === false ? 'Start' : 'Stop'}
     </button>
   );
 };
