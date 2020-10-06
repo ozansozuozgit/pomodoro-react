@@ -4,6 +4,7 @@ import {
   CHANGE_MODE,
   SET_TIMER,
   CHANGE_BACKGROUND,
+  UPDATE_TIMER,
 } from './types';
 
 export default (state, action) => {
@@ -19,6 +20,11 @@ export default (state, action) => {
         ...state,
         timer: action.payload,
         totalSeconds: action.payload * 60,
+      };
+    case UPDATE_TIMER:
+      return {
+        ...state,
+        timer: action.payload,
       };
     default:
       return state;

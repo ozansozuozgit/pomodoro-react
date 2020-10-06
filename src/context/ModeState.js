@@ -8,6 +8,7 @@ import {
   CHANGE_MODE,
   SET_TIMER,
   CHANGE_BACKGROUND,
+  UPDATE_TIMER
 } from './types';
 
 const ModeState = (props) => {
@@ -32,8 +33,8 @@ const ModeState = (props) => {
   };
 
   // Start Timer
-  const startTimer = (timer) => {
-    dispatch({ type: START_TIMER, payload: timer });
+  const updateTimer = (time) => {
+    dispatch({ type: UPDATE_TIMER, payload: time });
   };
 
   return (
@@ -45,6 +46,7 @@ const ModeState = (props) => {
         isClockRunning: state.isClockRunning,
         changeMode,
         setTimer,
+        updateTimer
       }}
     >
       {props.children}

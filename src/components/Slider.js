@@ -1,5 +1,10 @@
 import React, { useContext, useState } from 'react';
 import ModeContext from '../context/modeContext';
+import styled from 'styled-components';
+
+const Input = styled.input`
+  display: block;
+`;
 
 const Slider = () => {
   const modeContext = useContext(ModeContext);
@@ -14,7 +19,7 @@ const Slider = () => {
   };
 
   return (
-    <input
+    <Input
       type="range"
       name="slider"
       min="1"

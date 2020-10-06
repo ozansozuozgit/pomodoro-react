@@ -5,14 +5,7 @@ import ModeContext from '../context/modeContext';
 const ActionButton = () => {
   const modeContext = useContext(ModeContext);
 
-  const { isClockRunning, startTimer, totalSeconds } = modeContext;
-
-  const [counter, setCounter] = useState(0);
-
-  const timeIt = () => {
-    setCounter(counter + 1);
-    console.log(counter);
-  };
+  const { isClockRunning, updateTimer, totalSeconds } = modeContext;
 
   const timer = () => {
     if (isClockRunning === false) {
@@ -23,7 +16,7 @@ const ActionButton = () => {
       let countdown = setInterval(() => {
         const secondsLeft = Math.round((then - Date.now()) / 1000);
         // check if we should stop it
-        if (secondsLeft <= 0) {
+        if (secondsLeft < 0) {
           clearInterval(countdown);
           return;
         }
@@ -35,9 +28,11 @@ const ActionButton = () => {
   const displayTimeLeft = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const remainderSeconds = seconds % 60;
-    console.log(
-      `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`
-    );
+    let timer = `${minutes < 10 ? '0' : ''}${minutes}:${
+      remainderSeconds < 10 ? '0' : ''
+    }${remainderSeconds}`;
+    console.log(timer);
+    updateTimer(timer);
   };
 
   return (
