@@ -48,10 +48,25 @@ const ActionButton = () => {
   };
 
   return (
-    <button onClick={isClockRunning === false ? startTimer : stopTimer}>
-      {isClockRunning === false ? 'Start' : 'Stop'}
-    </button>
+    <Button
+      onClick={isClockRunning === false ? startTimer : stopTimer}
+      start={isClockRunning}
+    >
+      {isClockRunning === false ? 'START' : 'STOP'}
+    </Button>
   );
 };
+
+const Button = styled.button`
+  background-color: transparent;
+  border: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  outline: none;
+  color: ${(props) => (props.start === false ? 'red' : 'blue')};
+  &:hover {
+    opacity: 0.8;
+  }
+`;
 
 export default ActionButton;

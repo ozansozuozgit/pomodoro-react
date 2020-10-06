@@ -24,6 +24,7 @@ function App() {
 const Container = styled.div`
   background-color: black;
   height: 100vh;
+  text-align: center;
 `;
 
 export default App;

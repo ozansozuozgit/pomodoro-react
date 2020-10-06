@@ -2,18 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 
-const Name = styled.button`
-  background-color: ${(props) => (props.mode === 'STUDY' ? 'red' : 'blue')};
-  border: none;
-  border-radius: 15px;
-  font-size: 1.8em;
-  width: 150px;
-  cursor: pointer;
-  outline: none;
-  &:hover {
-    opacity: 0.8;
-  }
-`;
 
 const ModeButton = ({ name }) => {
   const modeContext = useContext(ModeContext);
@@ -37,6 +25,18 @@ const ModeButton = ({ name }) => {
   );
 };
 
-// disabled={mode === name ? 0 : 1}
+
+const Name = styled.button`
+  background-color: ${(props) => (props.mode === 'STUDY' ? 'red' : 'blue')};
+  border: none;
+  border-radius: 15px;
+  font-size: 1.8em;
+  width: 150px;
+  cursor: pointer;
+  outline: none;
+  &:hover {
+    opacity: 0.8;
+  }
+`;
 
 export default ModeButton;

@@ -12,6 +12,12 @@ const Timer = () => {
 
 const TimerDisplay = styled.span`
   color: rgb(40, 93, 162);
+  font-size: 8em;
+  padding: 30px;
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 15px;
+  box-shadow: 0 0 10px white;
 `;
 
 export default Timer;
