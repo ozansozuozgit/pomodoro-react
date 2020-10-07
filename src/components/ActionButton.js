@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 import actionSound from '../assets/actionSound.mp3';
@@ -6,60 +6,22 @@ import actionSound from '../assets/actionSound.mp3';
 const ActionButton = () => {
   const modeContext = useContext(ModeContext);
 
-  const {
-    isClockRunning,
-    setClockRunning,
-    updateTimer,
-    totalSeconds,
-    mode,
-  } = modeContext;
-
-  const intervalRef = useRef();
+  const { isClockRunning, mode, setClockRunning } = modeContext;
 
   let actionAudio = new Audio(actionSound);
   actionAudio.volume = 0.1;
 
-  const startTimer = () => {
+  const timerAction = () => {
     actionAudio.play();
-    setClockRunning(true);
-    const now = Date.now();
-    const then = now + totalSeconds * 1000;
-    displayTimeLeft(totalSeconds);
-
-    let countdown = setInterval(() => {
-      const secondsLeft = Math.round((then - Date.now()) / 1000);
-
-      if (secondsLeft < 0) {
-        clearInterval(countdown);
-        return;
-      }
-      displayTimeLeft(secondsLeft);
-    }, 1000);
-
-    intervalRef.current = countdown;
-  };
-
-  const stopTimer = () => {
-    actionAudio.play();
-    setClockRunning(false);
-    clearInterval(intervalRef.current);
-  };
-
-  const displayTimeLeft = (seconds) => {
-    const minutes = Math.floor(seconds / 60);
-    const remainderSeconds = seconds % 60;
-    let timer = `${minutes < 10 ? '0' : ''}${minutes}:${
-      remainderSeconds < 10 ? '0' : ''
-    }${remainderSeconds}`;
-    updateTimer(timer, seconds);
+    if (isClockRunning === false) {
+      setClockRunning(true);
+    } else {
+      setClockRunning(false);
+    }
   };
 
   return (
-    <Button
-      onClick={isClockRunning === false ? startTimer : stopTimer}
-      start={isClockRunning}
-      mode={mode}
-    >
+    <Button onClick={timerAction} mode={mode}>
       {isClockRunning === false ? 'START' : 'PAUSE'}
     </Button>
   );

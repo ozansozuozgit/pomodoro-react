@@ -8,7 +8,7 @@ const Container = (props) => {
   const { isClockRunning } = modeContext;
 
   return (
-    <PomodoroContainer start={isClockRunning}>
+    <PomodoroContainer start={isClockRunning ? 1 : 0}>
       {props.children}
     </PomodoroContainer>
   );

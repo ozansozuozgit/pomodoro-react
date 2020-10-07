@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Title from './components/Title';
 import ModeState from './context/ModeState';
 import ModeButtons from './components/ModeButtons';
@@ -8,7 +8,6 @@ import ActionButton from './components/ActionButton';
 import Background from './components/Background';
 import Container from './components/Container';
 
-import styled from 'styled-components';
 
 const App = () => {
   return (

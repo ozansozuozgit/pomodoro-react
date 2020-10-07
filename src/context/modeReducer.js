@@ -1,7 +1,6 @@
 import {
   CHANGE_MODE,
   SET_TIMER,
-  CHANGE_BACKGROUND,
   UPDATE_TIMER,
   SET_CLOCK_RUNNING,
 } from './types';
