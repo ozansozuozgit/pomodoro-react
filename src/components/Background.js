@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, Fragment } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 import study from '../assets/study.gif';
@@ -7,26 +7,22 @@ import rest from '../assets/rest.gif';
 const Background = () => {
   const modeContext = useContext(ModeContext);
 
-  const { mode, isClockRunning } = modeContext;
-  const [source, setSource] = useState(0);
+  const { mode } = modeContext;
 
-  useEffect(() => {
-    if (mode === 'study' && isClockRunning) {
-      setSource(study);
-    } else if (mode === 'rest' && isClockRunning) {
-      setSource(rest);
-    } else {
-      setSource('');
-    }
-    // eslint-disable-next-line
-  }, [isClockRunning]);
-
-  return <BackgroundImage src={source}></BackgroundImage>;
+  return (
+    <Fragment>
+      <BackgroundImage
+        src={study}
+        index={mode === 'study' ? true : false}
+      ></BackgroundImage>
+      <BackgroundImage src={rest} index={'rest'}></BackgroundImage>
+    </Fragment>
+  );
 };
 
 const BackgroundImage = styled.img`
   position: absolute;
-  z-index: -1;
+  z-index: ${(props) => (props.index === true ? '-1' : '-2')};
   height: 100%;
   left: 0;
   width: 100%;
