@@ -5,19 +5,21 @@ import ModeContext from '../context/modeContext';
 const Timer = () => {
   const modeContext = useContext(ModeContext);
 
-  const { timer } = modeContext;
+  const { timer, mode } = modeContext;
 
-  return <TimerDisplay>{timer}</TimerDisplay>;
+  return <TimerDisplay mode={mode}>{timer}</TimerDisplay>;
 };
 
 const TimerDisplay = styled.span`
-  color: rgb(40, 93, 162);
+  color: ${(props) => (props.mode === 'study' ? '#ff5656' : '#61DBFB')};
   font-size: 8em;
   padding: 30px;
   margin-top: 20px;
   display: inline-block;
   border-radius: 15px;
-  box-shadow: 0 0 10px white;
+  box-shadow: 0 0 10px
+    ${(props) => (props.mode === 'study' ? '#ff5656' : '#61DBFB')};
+  width: 280px;
 `;
 
 export default Timer;

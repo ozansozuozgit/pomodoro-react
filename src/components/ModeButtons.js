@@ -1,6 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import ModeContext from '../context/modeContext';
 import ModeButton from './ModeButton';
 
 const Container = styled.div`
@@ -11,10 +10,6 @@ const Container = styled.div`
 `;
 
 const ModeButtons = () => {
-  const modeContext = useContext(ModeContext);
-
-  const { mode } = modeContext;
-
   return (
     <div>
       <Container>

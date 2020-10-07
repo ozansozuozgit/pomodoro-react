@@ -10,6 +10,7 @@ const ActionButton = () => {
     setClockRunning,
     updateTimer,
     totalSeconds,
+    mode,
   } = modeContext;
 
   const intervalRef = useRef();
@@ -51,8 +52,9 @@ const ActionButton = () => {
     <Button
       onClick={isClockRunning === false ? startTimer : stopTimer}
       start={isClockRunning}
+      mode={mode}
     >
-      {isClockRunning === false ? 'START' : 'STOP'}
+      {isClockRunning === false ? 'START' : 'PAUSE'}
     </Button>
   );
 };
@@ -60,10 +62,12 @@ const ActionButton = () => {
 const Button = styled.button`
   background-color: transparent;
   border: none;
-  font-size: 1.8em;
+  font-size: 3.2em;
+  margin-top: 15px;
   cursor: pointer;
   outline: none;
-  color: ${(props) => (props.start === false ? 'red' : 'blue')};
+  color: ${(props) => (props.mode === 'study' ? '#ff5656' : '#61DBFB')};
+
   &:hover {
     opacity: 0.8;
   }

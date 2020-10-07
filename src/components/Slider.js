@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Slider = () => {
   const modeContext = useContext(ModeContext);
 
-  const { setTimer } = modeContext;
+  const { setTimer, mode } = modeContext;
 
   const [slider, setSlider] = useState(25);
 
@@ -23,6 +23,7 @@ const Slider = () => {
       max="60"
       value={slider}
       onChange={onSlide}
+      mode={mode}
     />
   );
 };
@@ -36,6 +37,8 @@ const Input = styled.input`
   width: 300px;
   background: black;
   height: 20px;
+  border-color: ${(props) => (props.mode === 'study' ? '#ff5656' : '#61DBFB')};
+
   &::-moz-range-thumb {
     -webkit-appearance: none;
     height: 30px;

@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 
-
 const ModeButton = ({ name }) => {
   const modeContext = useContext(ModeContext);
 
@@ -25,9 +24,8 @@ const ModeButton = ({ name }) => {
   );
 };
 
-
 const Name = styled.button`
-  background-color: ${(props) => (props.mode === 'STUDY' ? 'red' : 'blue')};
+  background-color: ${(props) => (props.mode === 'STUDY' ? '#ff5656' : '#61DBFB')};
   border: none;
   border-radius: 15px;
   font-size: 1.8em;
