@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
+import actionSound from '../assets/actionSound.mp3';
 
 const ActionButton = () => {
   const modeContext = useContext(ModeContext);
@@ -15,7 +16,11 @@ const ActionButton = () => {
 
   const intervalRef = useRef();
 
+  let actionAudio = new Audio(actionSound);
+  actionAudio.volume = 0.1;
+
   const startTimer = () => {
+    actionAudio.play();
     setClockRunning(true);
     const now = Date.now();
     const then = now + totalSeconds * 1000;
@@ -35,6 +40,7 @@ const ActionButton = () => {
   };
 
   const stopTimer = () => {
+    actionAudio.play();
     setClockRunning(false);
     clearInterval(intervalRef.current);
   };
