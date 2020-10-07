@@ -13,6 +13,7 @@ const Timer = () => {
     timer,
     changeMode,
     setTimer,
+    setClockRunning,
   } = modeContext;
 
   useEffect(() => {
@@ -36,12 +37,13 @@ const Timer = () => {
 
       if (secondsLeft < 0) {
         clearInterval(countdown);
+        setClockRunning(false);
         if (mode === 'study') {
           changeMode('rest');
-          setTimer('25:00', 25 * 60);
+          setTimer('10:00', 10 * 60);
         } else {
           changeMode('study');
-          setTimer('10:00', 10 * 60);
+          setTimer('25:00', 25 * 60);
         }
         return;
       }

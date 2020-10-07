@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const Slider = () => {
   const modeContext = useContext(ModeContext);
 
-  const { setTimer, mode, totalSeconds } = modeContext;
+  const { setTimer, mode, totalSeconds, isClockRunning } = modeContext;
 
   useEffect(() => {
     setSlider(totalSeconds / 60);
@@ -28,6 +28,7 @@ const Slider = () => {
       value={slider}
       onChange={onSlide}
       mode={mode}
+      disabled={isClockRunning === true ? true : false}
     />
   );
 };
@@ -42,6 +43,10 @@ const Input = styled.input`
   background: black;
   height: 20px;
   border-color: ${(props) => (props.mode === 'study' ? '#ff5656' : '#61DBFB')};
+
+  &:disabled {
+    filter: grayscale(80%);
+  }
 
   &::-moz-range-thumb {
     -webkit-appearance: none;
