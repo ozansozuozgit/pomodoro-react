@@ -1,11 +1,15 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import ModeContext from '../context/modeContext';
 import styled from 'styled-components';
 
 const Slider = () => {
   const modeContext = useContext(ModeContext);
 
-  const { setTimer, mode } = modeContext;
+  const { setTimer, mode, totalSeconds } = modeContext;
+
+  useEffect(() => {
+    setSlider(totalSeconds / 60);
+  }, [totalSeconds]);
 
   const [slider, setSlider] = useState(25);
 

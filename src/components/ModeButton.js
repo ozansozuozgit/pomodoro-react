@@ -6,7 +6,7 @@ import modeSound from '../assets/modeSound.mp3';
 const ModeButton = ({ name }) => {
   const modeContext = useContext(ModeContext);
 
-  const { setTimer, changeMode } = modeContext;
+  const { setTimer, changeMode, isClockRunning } = modeContext;
 
   let actionAudio = new Audio(modeSound);
   actionAudio.volume = 0.2;
@@ -24,7 +24,11 @@ const ModeButton = ({ name }) => {
   };
 
   return (
-    <Name mode={name} onClick={onChange}>
+    <Name
+      mode={name}
+      onClick={onChange}
+      disabled={isClockRunning === true ? true : false}
+    >
       {name}
     </Name>
   );

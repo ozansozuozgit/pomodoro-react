@@ -11,16 +11,17 @@ const Timer = () => {
     totalSeconds,
     mode,
     timer,
+    changeMode,
+    setTimer,
   } = modeContext;
 
   useEffect(() => {
-    console.log('clock');
     if (isClockRunning) {
       startTimer();
     } else {
       stopTimer();
     }
-  // eslint-disable-next-line 
+    // eslint-disable-next-line
   }, [isClockRunning]);
 
   const intervalRef = useRef();
@@ -35,6 +36,13 @@ const Timer = () => {
 
       if (secondsLeft < 0) {
         clearInterval(countdown);
+        if (mode === 'study') {
+          changeMode('rest');
+          setTimer('25:00', 25 * 60);
+        } else {
+          changeMode('study');
+          setTimer('10:00', 10 * 60);
+        }
         return;
       }
       displayTimeLeft(secondsLeft);
