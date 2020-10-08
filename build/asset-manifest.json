@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.js": "/pomodoro-react/static/js/main.7fe775a4.chunk.js",
+    "main.js.map": "/pomodoro-react/static/js/main.7fe775a4.chunk.js.map",
+    "runtime-main.js": "/pomodoro-react/static/js/runtime-main.353efe95.js",
+    "runtime-main.js.map": "/pomodoro-react/static/js/runtime-main.353efe95.js.map",
+    "static/css/2.764ccc25.chunk.css": "/pomodoro-react/static/css/2.764ccc25.chunk.css",
+    "static/js/2.7c28dcca.chunk.js": "/pomodoro-react/static/js/2.7c28dcca.chunk.js",
+    "static/js/2.7c28dcca.chunk.js.map": "/pomodoro-react/static/js/2.7c28dcca.chunk.js.map",
+    "index.html": "/pomodoro-react/index.html",
+    "precache-manifest.485f452b67845ded284437833a0d3d80.js": "/pomodoro-react/precache-manifest.485f452b67845ded284437833a0d3d80.js",
+    "service-worker.js": "/pomodoro-react/service-worker.js",
+    "static/css/2.764ccc25.chunk.css.map": "/pomodoro-react/static/css/2.764ccc25.chunk.css.map",
+    "static/js/2.7c28dcca.chunk.js.LICENSE.txt": "/pomodoro-react/static/js/2.7c28dcca.chunk.js.LICENSE.txt",
+    "static/media/actionSound.mp3": "/pomodoro-react/static/media/actionSound.e22d96e0.mp3",
+    "static/media/alarm.mp3": "/pomodoro-react/static/media/alarm.7a795c6f.mp3",
+    "static/media/modeSound.mp3": "/pomodoro-react/static/media/modeSound.40c711de.mp3",
+    "static/media/rest.gif": "/pomodoro-react/static/media/rest.26719c94.gif",
+    "static/media/study.gif": "/pomodoro-react/static/media/study.cf9b8a87.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.353efe95.js",
+    "static/css/2.764ccc25.chunk.css",
+    "static/js/2.7c28dcca.chunk.js",
+    "static/js/main.7fe775a4.chunk.js"
+  ]
+}
