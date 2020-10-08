@@ -14,7 +14,6 @@ const ModeState = (props) => {
     mode: 'study',
     totalSeconds: 1500,
     isClockRunning: false,
-    background: null,
     timer: '25:00',
   };
 

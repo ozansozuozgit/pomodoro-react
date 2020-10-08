@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, Fragment } from 'react';
+import React, { useContext, Fragment } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
 import study from '../assets/study.gif';

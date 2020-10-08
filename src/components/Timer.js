@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import ModeContext from '../context/modeContext';
+import alarm from '../assets/alarm.mp3';
 
 const Timer = () => {
   const modeContext = useContext(ModeContext);
@@ -27,6 +28,9 @@ const Timer = () => {
 
   const intervalRef = useRef();
 
+  let alarmAudio = new Audio(alarm);
+  alarmAudio.volume = 0.5;
+
   const startTimer = () => {
     const now = Date.now();
     const then = now + totalSeconds * 1000;
@@ -36,6 +40,7 @@ const Timer = () => {
       const secondsLeft = Math.round((then - Date.now()) / 1000);
 
       if (secondsLeft < 0) {
+        alarmAudio.play();
         clearInterval(countdown);
         setClockRunning(false);
         if (mode === 'study') {
